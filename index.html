@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amethyst Catalytic Converter - 3D Showcase</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/styles.css">
+</head>
+
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <div class="loading-text">Loading 3D Model...</div>
+            <div class="loading-progress">
+                <div class="loading-progress-bar" id="progress-bar"></div>
+            </div>
+            <div class="loading-percentage" id="loading-percentage">0%</div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">Amethyst</div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#overview" class="nav-link">Overview</a></li>
+                <li><a href="#technology" class="nav-link">Technology</a></li>
+                <li><a href="#model" class="nav-link">3D Model</a></li>
+                <li><a href="#specifications" class="nav-link">Specifications</a></li>
+            </ul>
+            <div class="nav-toggle" id="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section with 3D Viewer -->
+        <section id="home" class="section hero-section">
+            <div class="canvas-container" id="canvas-container">
+                <canvas id="three-canvas"></canvas>
+            </div>
+            <div class="hero-content">
+                <h1 class="hero-title">Amethyst Catalytic Converter</h1>
+                <p class="hero-subtitle">Innovative Catalytic Conversion Technology</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" id="explore-btn">Explore Model</button>
+                    <button class="btn btn-secondary" id="learn-more-btn">Learn More</button>
+                </div>
+            </div>
+            <div class="view-controls" id="view-controls">
+                <button class="control-btn" id="reset-view-btn" title="Reset View">
+                    <span>↺</span>
+                </button>
+                <button class="control-btn" id="front-view-btn" title="Front View">
+                    <span>⇧</span>
+                </button>
+                <button class="control-btn" id="side-view-btn" title="Side View">
+                    <span>⇨</span>
+                </button>
+                <button class="control-btn" id="top-view-btn" title="Top View">
+                    <span>⇪</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Overview Section -->
+        <section id="overview" class="section content-section">
+            <div class="container">
+                <h2 class="section-title">Project Overview</h2>
+                <div class="content-grid">
+                    <div class="content-card">
+                        <h3>Innovation</h3>
+                        <p>The Amethyst catalytic converter represents a breakthrough in automotive emissions control
+                            technology, combining advanced materials science with precision engineering.</p>
+                    </div>
+                    <div class="content-card">
+                        <h3>Performance</h3>
+                        <p>Engineered for maximum efficiency in converting harmful exhaust gases into safer emissions,
+                            meeting and exceeding modern environmental standards.</p>
+                    </div>
+                    <div class="content-card">
+                        <h3>Design</h3>
+                        <p>Meticulously designed 3D structure optimized for gas flow, surface area exposure, and
+                            catalytic activity throughout the exhaust system.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technology Section -->
+        <section id="technology" class="section content-section">
+            <div class="container">
+                <h2 class="section-title">Technology</h2>
+                <div class="tech-content">
+                    <p>Our catalytic converter utilizes cutting-edge technology to achieve superior performance in
+                        emissions reduction. The design incorporates advanced catalytic materials and optimized
+                        geometric structures that maximize the surface area for chemical reactions.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3D Model Section -->
+        <section id="model" class="section model-section">
+            <div class="container">
+                <h2 class="section-title">Interactive 3D Model</h2>
+                <p class="section-description">Explore the Amethyst catalytic converter in full 3D. Rotate, zoom, and
+                    pan to examine every detail of this innovative design.</p>
+            </div>
+        </section>
+
+        <!-- Specifications Section -->
+        <section id="specifications" class="section content-section">
+            <div class="container">
+                <h2 class="section-title">Specifications</h2>
+                <div class="specs-grid">
+                    <div class="spec-item">
+                        <h4>Material</h4>
+                        <p>Advanced Catalytic Materials</p>
+                    </div>
+                    <div class="spec-item">
+                        <h4>Compatibility</h4>
+                        <p>Universal Design</p>
+                    </div>
+                    <div class="spec-item">
+                        <h4>Efficiency</h4>
+                        <p>High Conversion Rate</p>
+                    </div>
+                    <div class="spec-item">
+                        <h4>Durability</h4>
+                        <p>Long-lasting Performance</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Amethyst Catalytic Converter Project. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>

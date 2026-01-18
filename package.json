@@ -1,0 +1,21 @@
+{
+  "name": "amethyst",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "3D Amethyst Catalytic Converter Website",
+  "dependencies": {
+    "three": "^0.168.0",
+    "gsap": "^3.12.5"
+  },
+  "devDependencies": {
+    "vite": "^5.4.0"
+  }
+}
