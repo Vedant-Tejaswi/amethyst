@@ -1,158 +1,203 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amethyst Catalytic Converter - 3D Showcase</title>
+    <title>INPCC Amethyst | Next-Gen Catalytic Converter</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/src/styles.css">
+    <link rel="stylesheet" href="src/styles.css">
 </head>
-
 <body>
     <!-- Loading Screen -->
     <div id="loading-screen" class="loading-screen">
         <div class="loading-content">
             <div class="loading-spinner"></div>
-            <div class="loading-text">Loading 3D Model...</div>
+            <div class="loading-text">Loading INPCC System...</div>
             <div class="loading-progress">
-                <div class="loading-progress-bar" id="progress-bar"></div>
+                <div id="progress-bar" class="loading-progress-bar"></div>
             </div>
-            <div class="loading-percentage" id="loading-percentage">0%</div>
+            <div id="loading-percentage" class="loading-percentage">0%</div>
         </div>
     </div>
 
     <!-- Navigation -->
-    <nav class="navbar" id="navbar">
+    <nav id="navbar" class="navbar">
         <div class="nav-container">
-            <div class="nav-logo">Amethyst</div>
-            <ul class="nav-menu" id="nav-menu">
-                <li><a href="#home" class="nav-link active">Home</a></li>
-                <li><a href="#overview" class="nav-link">Overview</a></li>
-                <li><a href="#technology" class="nav-link">Technology</a></li>
-                <li><a href="#model" class="nav-link">3D Model</a></li>
-                <li><a href="#specifications" class="nav-link">Specifications</a></li>
-            </ul>
-            <div class="nav-toggle" id="nav-toggle">
+            <div class="nav-logo">AMETHYST</div>
+            <div id="nav-toggle" class="nav-toggle">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
+            <ul id="nav-menu" class="nav-menu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#model" class="nav-link">3D Model</a></li>
+                <li><a href="#technology" class="nav-link">Technology</a></li>
+                <li><a href="#performance" class="nav-link">Performance</a></li>
+                <li><a href="#advantages" class="nav-link">Advantages</a></li>
+            </ul>
         </div>
     </nav>
 
-    <!-- Main Content -->
-    <main>
-        <!-- Hero Section with 3D Viewer -->
-        <section id="home" class="section hero-section">
-            <div class="canvas-container" id="canvas-container">
-                <canvas id="three-canvas"></canvas>
+    <!-- Canvas Container (Fixed Background) -->
+    <div class="canvas-container">
+        <canvas id="three-canvas"></canvas>
+    </div>
+
+    <!-- View Controls -->
+    <div id="view-controls" class="view-controls" style="display: none;">
+        <button id="reset-view-btn" class="control-btn" title="Reset View">⟲</button>
+        <button id="front-view-btn" class="control-btn" title="Front View">▶</button>
+        <button id="side-view-btn" class="control-btn" title="Side View">◀</button>
+        <button id="top-view-btn" class="control-btn" title="Top View">▲</button>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="section hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">AMETHYST</h1>
+            <p class="hero-subtitle">Integrated No-Pollution Catalytic Converter System</p>
+            <div class="hero-buttons">
+                <button id="explore-btn" class="btn btn-primary">Explore 3D Model</button>
+                <button id="learn-more-btn" class="btn btn-secondary">Learn More</button>
             </div>
-            <div class="hero-content">
-                <h1 class="hero-title">Amethyst Catalytic Converter</h1>
-                <p class="hero-subtitle">Innovative Catalytic Conversion Technology</p>
-                <div class="hero-buttons">
-                    <button class="btn btn-primary" id="explore-btn">Explore Model</button>
-                    <button class="btn btn-secondary" id="learn-more-btn">Learn More</button>
+        </div>
+    </section>
+
+    <!-- 3D Model Section -->
+    <section id="model" class="section model-section">
+        <div class="container">
+            <h2 class="section-title">Interactive 3D Model</h2>
+            <p class="section-description">
+                Experience our revolutionary three-chamber catalytic converter system. Use your mouse to rotate and explore the model from every angle.
+            </p>
+        </div>
+    </section>
+
+    <!-- Technology Section -->
+    <section id="technology" class="section content-section">
+        <div class="container">
+            <h2 class="section-title">Three-Chamber Technology</h2>
+            <div class="content-grid">
+                <div class="content-card">
+                    <h3>01 • Primary Catalytic Chamber</h3>
+                    <p>Converts CO and hydrocarbons to CO₂ and H₂O through oxidation using platinum, palladium, and rhodium catalysts.</p>
+                    <p style="margin-top: 1rem; font-family: monospace; font-size: 0.9rem; color: #FAF0CA;">
+                        CO + O₂ → CO₂
+                    </p>
+                </div>
+                <div class="content-card">
+                    <h3>02 • Secondary NOx Chamber</h3>
+                    <p>Uses Selective Catalytic Reduction (SCR) with urea to break down NOx into nitrogen and oxygen.</p>
+                    <p style="margin-top: 1rem; font-family: monospace; font-size: 0.9rem; color: #FAF0CA;">
+                        2NO + 2NH₃ + ½O₂ → 2N₂ + 3H₂O
+                    </p>
+                </div>
+                <div class="content-card">
+                    <h3>03 • CO₂ Conversion Chamber</h3>
+                    <p>Employs molten carbonate electrolysis at 700°C to convert CO₂ into solid carbon and oxygen gas.</p>
+                    <p style="margin-top: 1rem; font-family: monospace; font-size: 0.9rem; color: #FAF0CA;">
+                        CO₂ + 4e⁻ → C + 2O²⁻
+                    </p>
                 </div>
             </div>
-            <div class="view-controls" id="view-controls">
-                <button class="control-btn" id="reset-view-btn" title="Reset View">
-                    <span>↺</span>
-                </button>
-                <button class="control-btn" id="front-view-btn" title="Front View">
-                    <span>⇧</span>
-                </button>
-                <button class="control-btn" id="side-view-btn" title="Side View">
-                    <span>⇨</span>
-                </button>
-                <button class="control-btn" id="top-view-btn" title="Top View">
-                    <span>⇪</span>
-                </button>
-            </div>
-        </section>
 
-        <!-- Overview Section -->
-        <section id="overview" class="section content-section">
-            <div class="container">
-                <h2 class="section-title">Project Overview</h2>
-                <div class="content-grid">
-                    <div class="content-card">
-                        <h3>Innovation</h3>
-                        <p>The Amethyst catalytic converter represents a breakthrough in automotive emissions control
-                            technology, combining advanced materials science with precision engineering.</p>
-                    </div>
-                    <div class="content-card">
-                        <h3>Performance</h3>
-                        <p>Engineered for maximum efficiency in converting harmful exhaust gases into safer emissions,
-                            meeting and exceeding modern environmental standards.</p>
-                    </div>
-                    <div class="content-card">
-                        <h3>Design</h3>
-                        <p>Meticulously designed 3D structure optimized for gas flow, surface area exposure, and
-                            catalytic activity throughout the exhaust system.</p>
-                    </div>
+            <div class="tech-content">
+                <h3 style="font-size: 1.8rem; margin-bottom: 1.5rem; color: #FAF0CA; text-align: center;">Carbon Storage System</h3>
+                <p>
+                    The system produces approximately 30.5kg of solid carbon per 1000km of travel. Our automated fan-based collection mechanism uses mesh filters and weight sensors to capture and store carbon efficiently. With a 37kg storage capacity, the system provides approximately 1200km of travel between maintenance intervals.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Performance Section -->
+    <section id="performance" class="section content-section">
+        <div class="container">
+            <h2 class="section-title">Performance Metrics</h2>
+            <div class="specs-grid">
+                <div class="spec-item">
+                    <h4>80%</h4>
+                    <p>CO₂ Conversion Rate</p>
+                </div>
+                <div class="spec-item">
+                    <h4>50-70%</h4>
+                    <p>Overall Emission Reduction</p>
+                </div>
+                <div class="spec-item">
+                    <h4>30.5 kg</h4>
+                    <p>Carbon Yield per 1000km</p>
+                </div>
+                <div class="spec-item">
+                    <h4>64%</h4>
+                    <p>Lower Manufacturing Cost</p>
                 </div>
             </div>
-        </section>
 
-        <!-- Technology Section -->
-        <section id="technology" class="section content-section">
-            <div class="container">
-                <h2 class="section-title">Technology</h2>
-                <div class="tech-content">
-                    <p>Our catalytic converter utilizes cutting-edge technology to achieve superior performance in
-                        emissions reduction. The design incorporates advanced catalytic materials and optimized
-                        geometric structures that maximize the surface area for chemical reactions.</p>
+            <div class="content-grid" style="margin-top: 4rem;">
+                <div class="content-card">
+                    <h3>Economic Viability</h3>
+                    <p>Manufacturing cost of $300-$330 compared to $600-$800 for conventional catalytic converters. Break-even analysis shows 4.64 years for hatchbacks and 11.95 years for sedans when compared to EVs.</p>
+                </div>
+                <div class="content-card">
+                    <h3>Energy Efficiency</h3>
+                    <p>Self-sustaining energy system utilizing regenerative braking and waste heat recovery. Minimal additional power requirements through efficient catalysts and optimized design.</p>
+                </div>
+                <div class="content-card">
+                    <h3>Minimal Maintenance</h3>
+                    <p>Urea consumption of just 0.65-1.08L per 1000km. Automated carbon collection with DEF tank capacity sufficient for 3000-5000km between refills.</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- 3D Model Section -->
-        <section id="model" class="section model-section">
-            <div class="container">
-                <h2 class="section-title">Interactive 3D Model</h2>
-                <p class="section-description">Explore the Amethyst catalytic converter in full 3D. Rotate, zoom, and
-                    pan to examine every detail of this innovative design.</p>
-            </div>
-        </section>
-
-        <!-- Specifications Section -->
-        <section id="specifications" class="section content-section">
-            <div class="container">
-                <h2 class="section-title">Specifications</h2>
-                <div class="specs-grid">
-                    <div class="spec-item">
-                        <h4>Material</h4>
-                        <p>Advanced Catalytic Materials</p>
-                    </div>
-                    <div class="spec-item">
-                        <h4>Compatibility</h4>
-                        <p>Universal Design</p>
-                    </div>
-                    <div class="spec-item">
-                        <h4>Efficiency</h4>
-                        <p>High Conversion Rate</p>
-                    </div>
-                    <div class="spec-item">
-                        <h4>Durability</h4>
-                        <p>Long-lasting Performance</p>
-                    </div>
+    <!-- Advantages Section -->
+    <section id="advantages" class="section content-section">
+        <div class="container">
+            <h2 class="section-title">Key Advantages</h2>
+            <div class="content-grid">
+                <div class="content-card">
+                    <h3>Comprehensive Emission Control</h3>
+                    <p>Complete pollutant removal including CO₂ conversion, addressing all major vehicle emissions in a single integrated system.</p>
+                </div>
+                <div class="content-card">
+                    <h3>Valuable By-Products</h3>
+                    <p>Produces solid carbon and oxygen that can be utilized, creating economic value from waste emissions.</p>
+                </div>
+                <div class="content-card">
+                    <h3>Retrofit Compatible</h3>
+                    <p>Compact design allows easy integration into existing vehicles and fossil fuel machinery without major modifications.</p>
+                </div>
+                <div class="content-card">
+                    <h3>Cost-Effective Solution</h3>
+                    <p>Significantly lower initial cost and competitive long-term economics compared to electric vehicle alternatives.</p>
+                </div>
+                <div class="content-card">
+                    <h3>Self-Sustaining Energy</h3>
+                    <p>Utilizes regenerative braking energy and captures waste heat from exhaust to minimize additional power requirements.</p>
+                </div>
+                <div class="content-card">
+                    <h3>Proven Performance</h3>
+                    <p>Validated through CFD analysis on Autodesk CFD and reaction kinetic simulation on ANSYS CHEMKIN.</p>
                 </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 Amethyst Catalytic Converter Project. All rights reserved.</p>
+            <p>INPCC Amethyst System | Next-Generation Emission Control Technology</p>
+            <p style="margin-top: 1rem; font-size: 0.9rem;">
+                <a href="https://github.com/Vedant-Tejaswi/amethyst" target="_blank" style="color: #FAF0CA; text-decoration: none;">
+                    View on GitHub →
+                </a>
+            </p>
         </div>
     </footer>
 
-    <script type="module" src="/src/main.js"></script>
+    <script type="module" src="src/main.js"></script>
 </body>
-
 </html>

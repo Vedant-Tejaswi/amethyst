@@ -52,71 +52,68 @@ export class ModelLoader {
         fbx.position.y = -center.y * scale;
         fbx.position.z = -center.z * scale;
 
-        // Enable shadows and fix materials - replace with new materials
+        // Process materials - preserve original colors from FBX
         fbx.traverse((child) => {
             if (child.isMesh) {
                 child.castShadow = true;
                 child.receiveShadow = true;
 
-                // Replace materials entirely with new MeshStandardMaterial
-                const oldMaterial = child.material;
+                // Get the original material(s)
+                const materials = Array.isArray(child.material) ? child.material : [child.material];
+                const newMaterials = [];
 
-                if (oldMaterial) {
-                    // Check if we should preserve textures
-                    let textureMap = null;
-                    let normalMap = null;
-                    let originalColor = null;
+                materials.forEach(mat => {
+                    if (mat) {
+                        // Create new material preserving original properties
+                        const newMaterial = new THREE.MeshStandardMaterial({
+                            color: mat.color ? mat.color.clone() : new THREE.Color(0xcccccc),
+                            map: mat.map || null,
+                            normalMap: mat.normalMap || null,
+                            roughnessMap: mat.roughnessMap || null,
+                            metalnessMap: mat.metalnessMap || null,
+                            emissive: mat.emissive ? mat.emissive.clone() : new THREE.Color(0x000000),
+                            emissiveMap: mat.emissiveMap || null,
+                            emissiveIntensity: mat.emissiveIntensity || 0,
+                            metalness: mat.metalness !== undefined ? mat.metalness : 0.3,
+                            roughness: mat.roughness !== undefined ? mat.roughness : 0.7,
+                            side: THREE.DoubleSide,
+                            transparent: mat.transparent || false,
+                            opacity: mat.opacity !== undefined ? mat.opacity : 1.0
+                        });
 
-                    const materials = Array.isArray(oldMaterial) ? oldMaterial : [oldMaterial];
-
-                    // Try to extract texture and color from original materials
-                    materials.forEach(mat => {
-                        if (mat && mat.map) {
-                            textureMap = mat.map;
+                        // If the material has a name, preserve it
+                        if (mat.name) {
+                            newMaterial.name = mat.name;
                         }
-                        if (mat && mat.normalMap) {
-                            normalMap = mat.normalMap;
-                        }
-                        if (mat && mat.color && (mat.color.r > 0 || mat.color.g > 0 || mat.color.b > 0)) {
-                            originalColor = mat.color.clone();
-                        }
-                    });
 
-                    // Create new material with proper defaults
-                    const newMaterial = new THREE.MeshStandardMaterial({
-                        color: originalColor || 0x888888, // Default to gray if no color found
-                        map: textureMap || null,
-                        normalMap: normalMap || null,
-                        metalness: 0.3,
-                        roughness: 0.7,
-                        side: THREE.DoubleSide
-                    });
+                        newMaterials.push(newMaterial);
+                    } else {
+                        // Fallback material
+                        newMaterials.push(new THREE.MeshStandardMaterial({
+                            color: 0xcccccc,
+                            metalness: 0.3,
+                            roughness: 0.7,
+                            side: THREE.DoubleSide
+                        }));
+                    }
+                });
 
-                    // Replace material
-                    child.material = newMaterial;
+                // Assign the new material(s)
+                child.material = newMaterials.length === 1 ? newMaterials[0] : newMaterials;
 
-                    // Dispose old materials to free memory
-                    materials.forEach(mat => {
-                        if (mat) {
-                            if (mat.map) mat.map.dispose();
-                            if (mat.normalMap) mat.normalMap.dispose();
-                            mat.dispose();
-                        }
-                    });
+                // Force material update
+                if (Array.isArray(child.material)) {
+                    child.material.forEach(m => m.needsUpdate = true);
                 } else {
-                    // No material exists, create a default one
-                    child.material = new THREE.MeshStandardMaterial({
-                        color: 0x888888,
-                        metalness: 0.3,
-                        roughness: 0.7,
-                        side: THREE.DoubleSide
-                    });
+                    child.material.needsUpdate = true;
                 }
             }
         });
 
         // Add to scene
         this.scene.add(fbx);
+        
+        console.log('Model loaded and processed successfully');
     }
 
     getModel() {
@@ -132,8 +129,18 @@ export class ModelLoader {
                     if (child.geometry) child.geometry.dispose();
                     if (child.material) {
                         if (Array.isArray(child.material)) {
-                            child.material.forEach(mat => mat.dispose());
+                            child.material.forEach(mat => {
+                                if (mat.map) mat.map.dispose();
+                                if (mat.normalMap) mat.normalMap.dispose();
+                                if (mat.roughnessMap) mat.roughnessMap.dispose();
+                                if (mat.metalnessMap) mat.metalnessMap.dispose();
+                                mat.dispose();
+                            });
                         } else {
+                            if (child.material.map) child.material.map.dispose();
+                            if (child.material.normalMap) child.material.normalMap.dispose();
+                            if (child.material.roughnessMap) child.material.roughnessMap.dispose();
+                            if (child.material.metalnessMap) child.material.metalnessMap.dispose();
                             child.material.dispose();
                         }
                     }

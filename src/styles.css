@@ -412,6 +412,13 @@ body {
     margin-top: 3rem;
 }
 
+.tech-content {
+    background: rgba(10, 46, 77, 0.6);
+    border: 1px solid var(--border-color);
+    border-radius: 15px;
+    padding: 2rem;
+}
+
 .tech-content p {
     font-size: 1.1rem;
     color: var(--text-muted);
